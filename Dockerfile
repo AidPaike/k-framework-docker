@@ -46,8 +46,8 @@ ENV HOME /root
 
 ENV kframework /root/kframework
 LABEL key="value13"
-ENV http_proxy socks5://10.15.0.35:20170
-ENV https_proxy socks5://10.15.0.35:20170
+# ENV http_proxy socks5://10.15.0.35:20170
+# ENV https_proxy socks5://10.15.0.35:20170
 RUN git config --global http.postBuffer 20000000 \
     && git init \
     && git clone  --depth=1 -b master https://github.com/runtimeverification/k.git  $kframework \
