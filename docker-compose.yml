@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+
+  kframework_service:
+    image: kframework_image:v1.0
+    container_name: kframework_container
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    #保持容器运行
+    tty: true
+    restart: always
+    network_mode: "host"
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           # count: 1
+    #           capabilities: [gpu]
