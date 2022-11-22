@@ -34,8 +34,8 @@ RUN \
 # RUN DEBIAN_FRONTEND=noninteractive apt-get update &&  \
 #     DEBIAN_FRONTEND=noninteractive apt-get install -y zlib1g-dev libboost-test-dev libyaml-dev libjemalloc-dev
 RUN ln -s /usr/bin/python3.8 /usr/bin/python \
-    && python -m pip install --no-cache-dir --upgrade pip -i https://pypi.tuna.tsinghua.edu.cn/simple
-RUN curl -sSL https://get.haskellstack.org/ | sh \
+    && python -m pip install --no-cache-dir --upgrade pip -i https://pypi.tuna.tsinghua.edu.cn/simple \
+    && curl -sSL https://get.haskellstack.org/ | sh \
     && sed -ie 's/# zh_CN.UTF-8 UTF-8/zh_CN.UTF-8 UTF-8/g' /etc/locale.gen \
     && locale-gen
 
@@ -56,9 +56,9 @@ RUN git config --global http.postBuffer 20000000 \
     && git submodule update --init --recursive
 
 #开启ssh服务
-RUN mkdir /var/run/sshd
-RUN echo 'root:123123' | chpasswd
-RUN echo "Port 1349" >> /etc/ssh/sshd_config
-RUN echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
-RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
-RUN echo "service ssh restart" >> ~/.bashrc
+RUN mkdir /var/run/sshd \
+    echo 'root:123123' | chpasswd \
+    && echo "Port 1349" >> /etc/ssh/sshd_config \
+    && echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config \
+    && echo "PermitRootLogin yes" >> /etc/ssh/sshd_config \
+    && echo "service ssh restart" >> ~/.bashrc

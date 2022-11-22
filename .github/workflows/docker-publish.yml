@@ -21,7 +21,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: AidPaike/k-framework-docker
+          images: littlepaike/k-framework-dev
           tags: latest
 
       - name: Build and push Docker image
